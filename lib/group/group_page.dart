@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:worker_s/page/group/group_model.dart';
+import 'package:worker_s/group/group_model.dart';
 import 'package:http/http.dart' as http;
 
 class Gorup_page extends StatefulWidget {

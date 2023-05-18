@@ -6,7 +6,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
-import 'package:worker_s/page/worke/worke_model.dart';
+import 'package:worker_s/user/user_model.dart';
+import '';
 
 class workes_post extends StatefulWidget {
   const workes_post({super.key});
@@ -16,14 +17,17 @@ class workes_post extends StatefulWidget {
 }
 
 class _workes_postState extends State<workes_post> {
-  List<Work_model> Work_list = [];
-  Future<List<Work_model>> Posted_work() async {
-    final Work_url = Uri.parse("https://jsonplaceholder.typicode.com/comments");
-    var Work_res = await http.get(Work_url);
-    var Work_body = jsonDecode(Work_res.body);
-    for (var data in Work_body) {
-      Work_list.add(Work_model.fromJson(data));
+  List<Worker_model> Work_list = [];
+  Future<List<Worker_model>> Post_work() async {
+    final User_url = Uri.parse("https://jsonplaceholder.typicode.com/users");
+    final reponse_Workers = await http.get(User_url);
+    var rep_body = jsonDecode(reponse_Workers.body);
+    for (var data in rep_body) {
+      Work_list.add(Worker_model.fromJson(data));
     }
+    print(reponse_Workers.body);
+
+    print(reponse_Workers.statusCode);
     return Work_list;
   }
 
@@ -31,7 +35,7 @@ class _workes_postState extends State<workes_post> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: FutureBuilder(
-            future: Posted_work(),
+            future: Post_work(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
@@ -43,7 +47,8 @@ class _workes_postState extends State<workes_post> {
                           children: [
                             ListTile(
                               title: Text(Work_list[index].name.toString()),
-                              subtitle: Text(Work_list[index].body.toString()),
+                              subtitle:
+                                  Text(Work_list[index].company.toString()),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -51,7 +56,21 @@ class _workes_postState extends State<workes_post> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Post: 01/05/2023"),
+                                  Row(
+                                    children: [
+                                      Text("Post: 01/05/2023"),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
+                                        child: Icon(Icons.location_on),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 3.0),
+                                        child: Text("খুলনা"),
+                                      ),
+                                    ],
+                                  ),
                                   TextButton(
                                       // style: ElevatedButton.styleFrom(
                                       //     backgroundColor: Colors.green),
@@ -113,7 +132,7 @@ class _workes_postState extends State<workes_post> {
                                               ),
                                             ]);
                                       },
-                                      child: Text("Aplly"))
+                                      child: Text("আবেদন করুন"))
                                 ],
                               ),
                             )

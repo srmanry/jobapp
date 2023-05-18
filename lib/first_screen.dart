@@ -4,18 +4,18 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:marquee/marquee.dart';
-import 'package:worker_s/pages/style.dart';
-import 'package:worker_s/page/user/user_home_page.dart';
-import 'package:worker_s/page/worke/workes_post.dart';
+import 'package:worker_s/style.dart';
+import 'package:worker_s/user/user_home_page.dart';
+import 'package:worker_s/worke/workes_post.dart';
 
-class Kormo_home extends StatefulWidget {
-  const Kormo_home({super.key});
+class First_screen extends StatefulWidget {
+  const First_screen({super.key});
 
   @override
-  State<Kormo_home> createState() => _Kormo_homeState();
+  State<First_screen> createState() => _Kormo_homeState();
 }
 
-class _Kormo_homeState extends State<Kormo_home> {
+class _Kormo_homeState extends State<First_screen> {
   List workers_name = [
     "কৃষি",
     "শিক্ষা",
@@ -24,9 +24,9 @@ class _Kormo_homeState extends State<Kormo_home> {
     "বিদ্যুৎ",
     "পরিবহন",
     "রাজমিস্ত্রি",
-    "রাজমিস্ত্রি",
-    "রাজমিস্ত্রি",
-    "খামার",
+    "কাঠমিস্ত্রি",
+    "টাইলসমিস্ত্রি",
+    "পরিচ্ছন্ন",
     "বাবুর্চি",
     "মেরামত",
   ];

@@ -7,8 +7,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:worker_s/page/profile_page.dart';
-import 'package:worker_s/page/user/user_model.dart';
+import 'package:worker_s/Drawer/profile_page.dart';
+import 'package:worker_s/user/user_model.dart';
+
+import '../login/raig_page.dart';
 
 class One_workers extends StatefulWidget {
   const One_workers({super.key});
@@ -53,9 +55,14 @@ class _One_workersState extends State<One_workers> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.add,
-              color: Colors.green,
+            child: InkWell(
+              onTap: () {
+                Get.to(Ragi_page());
+              },
+              child: Icon(
+                Icons.add,
+                color: Colors.green,
+              ),
             ),
           )
         ],
@@ -68,7 +75,7 @@ class _One_workersState extends State<One_workers> {
                   itemCount: Cmt_list.length,
                   itemBuilder: (_, index) {
                     return Card(
-                      elevation: 5,
+                      elevation: 0,
                       child: Container(
                         height: 80,
                         child: Padding(

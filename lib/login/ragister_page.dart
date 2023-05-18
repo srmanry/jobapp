@@ -12,8 +12,6 @@ class Rag_page extends StatefulWidget {
 class _Rag_pageState extends State<Rag_page> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("text"),
-    );
+    return Scaffold(body: Column());
   }
 }
